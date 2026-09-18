@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/TheAwiksMedia/сss/style.css">
+    <script src="js.fog/site.js" defer></script>
+    <title>Local Group Media</title>
+</head>
+<header class="header">
+    <nav class="nav">
+        <a href="index.html"><img src="/TheAwiksMedia/сss/images.cat/TheAwiksLogo.jpg" alt="The Awiks Media Logo"></a>
+        <ul>
+            <li><a class="nav-link" href="index.html" data-i18n="main">Main Page</a></li>
+            <li><a class="nav-link" href="News.html" data-i18n="news">News</a></li>
+            <li><a class="nav-link" href="projects.html" data-i18n="projects">Projects on Media</a></li>
+            <li><a class="nav-link" href="other.html" data-i18n="other">About Us & Other things</a></li>
+            <li class="language-switcher" aria-label="Language"><button type="button" data-language="uk">UA</button><button type="button" data-language="en">EN</button><button type="button" data-language="ru">RU</button></li>
+        </ul>
+    </nav>
+</header>
+<body class="group-page">
+    <main class="group-panel">
+        <h1 data-i18n="groupTitle">Local Group Media</h1>
+        <p data-i18n="groupHint">Use the code shared by your local group administrator.</p>
+        <form id="group-entry-form">
+            <label for="group-code" data-i18n="groupPrompt">Enter your group code</label>
+            <input id="group-code" name="code" type="text" autocomplete="off" required>
+            <button type="submit" data-i18n="groupSubmit">Enter group</button>
+            <p class="form-error" id="group-error" data-i18n="groupNotFound" hidden></p>
+        </form>
+        <a class="back-link" href="index.html" data-i18n="back">Back to group entry</a>
+    </main>
+    <script>
+        const groups = {
+            AWIKS2026: { name: "The Awiks Local Group", posts: ["Welcome to the local group media"] }
+        };
+        const form = document.getElementById("group-entry-form");
+        const error = document.getElementById("group-error");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const code = document.getElementById("group-code").value.trim().toUpperCase();
+            const group = groups[code];
+            if (!group) {
+                error.hidden = false;
+                return;
+            }
+            sessionStorage.setItem("awiks-group", JSON.stringify(group));
+            window.location.href = "localgroup-1.html";
+        });
+    </script>
+</body>
+</html>
