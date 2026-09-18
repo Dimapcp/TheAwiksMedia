@@ -207,3 +207,11 @@ a.nav-link {
     border-left: 4px solid #d6b142;
     background: #f3f0e8;
 }
+footer.footer {
+    text-align: center;
+    padding: 12px 0;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+}
